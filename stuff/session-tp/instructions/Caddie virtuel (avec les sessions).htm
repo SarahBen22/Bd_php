@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0082)http://www.toutestfacile.com/php/cours/printables/PHPFacile.com-caddiesessions.php -->
+<HTML><HEAD><TITLE>Caddie virtuel (avec les sessions)</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<STYLE>.copyright {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; COLOR: #1e2a63; LINE-HEIGHT: normal; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+.topmenu {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffcf00; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A {
+	COLOR: #1e2a63; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #1e2a63
+}
+.link {
+	COLOR: #1e2a63; TEXT-DECORATION: underline
+}
+.link:hover {
+	COLOR: #1e2a63; TEXT-DECORATION: none
+}
+.rem {
+	BACKGROUND-COLOR: #dddddd
+}
+.text {
+	FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.tabtext {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 20px; COLOR: #ffcf00; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #1e2a63
+}
+H2 {
+	FONT-SIZE: 14px; COLOR: #ffcf00; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #1e2a63
+}
+.code {
+	FONT-SIZE: 12px; FONT-FAMILY: "MS Courier New", courier; BACKGROUND-COLOR: #eeeeee
+}
+.output {
+	FONT-SIZE: 12px; FONT-FAMILY: "MS Courier New", courier; BACKGROUND-COLOR: #f9f9f9
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY>
+<P class=copyright>Ce cours vous est offert par ToutEstFacile ! merci de 
+respecter le travail de l'auteur en gardant cette mention.<BR>D'autres cours de 
+ce genre sont disponibles sur le site <A 
+href="http://www.toutestfacile.com/">ToutEstFacile! (www.toutestfacile.com)</A> 
+</P>
+<CENTER>
+<H1>Caddie virtuel (avec les sessions)</H1></CENTER><FONT 
+class=prerequisite>Pré-requis:</FONT><A class=prerequisite 
+href="http://www.toutestfacile.com/phpinit.php?tef_site=php&amp;chap=formulaire0">Les 
+formulaires (cours) </A><BR><FONT class=prerequisite>Pré-requis:</FONT><A 
+class=prerequisite 
+href="http://www.toutestfacile.com/phpinit.php?tef_site=php&amp;chap=sessions0">Les 
+sessions (cours) </A><BR>
+<H1>Caddie virtuel (version 1)</H1>
+<P class=text>Nous allons faire un marché, avec des pommes des poires et des 
+bananes à acheter, on pourra les acheter une à une et supprimer toutes les 
+pommes, toutes les poires ou toutes les bananes. Il sera également possible de 
+vider complètement son panier. </P><A class=link 
+href="http://www.toutestfacile.com/php/cours/printables/php/cours/insert/caddiesession.php" 
+target=example>(Voir exemple)</A> 
+<TABLE cellSpacing=1 cellPadding=0 bgColor=#000000 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=2 width=600 border=0>
+        <TBODY>
+        <TR class=code>
+          <TD>&lt;?php<BR>&nbsp;&nbsp;&nbsp;&nbsp;// Dans ce script nous 
+            utilisons les 
+            sessions<BR>&nbsp;&nbsp;&nbsp;&nbsp;session_start();<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            ($_GET["action"]=="destroy") 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// on a 
+            demander à tout 
+            supprimer<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_destroy();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            (isset($_GET["raz"])) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// On a demandé 
+            à reinitialiser une 
+            valeur<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch 
+            ($_GET["raz"]) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "pomme":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($_SESSION["pommes"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "poire":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($_SESSION["poires"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "banane":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($_SESSION["bananes"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            (isset($_GET["achat"])) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// On a demandé 
+            à incrémenter une 
+            valeur&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch 
+            ($_GET["achat"]) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "pomme":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SESSION["pommes"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "poire":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SESSION["poires"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "banane":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SESSION["bananes"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp; 
+            }&nbsp;&nbsp;&nbsp;&nbsp; <BR>?&gt;<BR>Nb Pommes:&lt;?php echo 
+            $_SESSION["pommes"];?&gt;&lt;br /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=pomme"&gt;Acheter une 
+            pomme&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=pomme"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>Nb Poires:&lt;?php echo $_SESSION["poires"];?&gt;&lt;br 
+            /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=poire"&gt;Acheter une 
+            poire&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=poire"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>Nb Bananes:&lt;?php echo 
+            $_SESSION["bananes"];?&gt;&lt;br /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=banane"&gt;Acheter une 
+            banane&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=banane"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>&lt;br/&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?action=destroy"&gt;Détruire la 
+            session&lt;/a&gt;&lt;br/&gt;<BR><BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P class=text>Si vous avez une version 4.0.X de PHP vous devrez utiliser le 
+script suivant 
+<TABLE cellSpacing=1 cellPadding=0 bgColor=#000000 border=0>
+  <TBODY></TBODY></TABLE></P>
+<TABLE width=600>
+  <TBODY>
+  <TR>
+    <TD class=rem>
+      <P class=rem><U>Remarques:</U> 
+      <OL class=rem>
+        <LI>Un simple appel à <I>session_start()</I> et nous pouvons utiliser 
+        les variables de session. 
+        <LI>Nous étudions ensuite les différents cas "destruction de la 
+        session", "mis à zero", "ajout d'un fruit". Selon le cas, il faut 
+        appeler <I>session_destroy()</I>, supprimer la variable de session ou 
+        simplement incrémenter une variable de session. 
+        <LI>A l'issue de chacun de ces cas, le script est ré-appelé lui-même 
+        (avec un appel du type header("Location: $url")). Ceci n'est en aucun 
+        cas lié à l'utilisation des sessions mais permet de ne plus avoir les 
+        paramètres de l'action qui vient d'avoir lieu dans l'URL, ceci afin de 
+        ne pas répéter l'action par exemple en cas de rechargement 
+        (rafraichissement) de la page. </LI></OL>
+      <P></P></TD></TR></TBODY></TABLE>
+<P class=text>Voilà! Ca fonctionne, mais... en fait, plutôt que d'utiliser une 
+variable de session par article nous pouvons utiliser un tableau d'articles 
+comme nous allons le voir immédiatement.</P>
+<H1>Caddie virtuel (version 2)</H1>
+<P class=text>Nous l'avons dit, il est possible de stocker des tableaux dans des 
+variables de sessions et nous le prouvons. </P><A class=link 
+href="http://www.toutestfacile.com/php/cours/printables/php/cours/insert/caddiesession_02.php" 
+target=example>(Voir exemple)</A> 
+<TABLE cellSpacing=1 cellPadding=0 bgColor=#000000 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=2 width=600 border=0>
+        <TBODY>
+        <TR class=code>
+          <TD>&lt;?php<BR>&nbsp;&nbsp;&nbsp;&nbsp;// Dans ce script nous 
+            utilisons les 
+            sessions<BR>&nbsp;&nbsp;&nbsp;&nbsp;session_start();<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;// 
+            Chargement du caddie<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            (isset($_SESSION["caddie"])) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$caddie = 
+            $_SESSION["caddie"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;} else 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$caddie = 
+            array();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp; 
+            <BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            ($_GET["action"]=="destroy") 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// on a 
+            demander à tout 
+            supprimer<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_destroy();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            (isset($_GET["raz"])) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// On a demandé 
+            à reinitialiser une 
+            valeur<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch 
+            ($_GET["raz"]) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "pomme":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($caddie["pommes"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "poire":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($caddie["poires"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "banane":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset($caddie["bananes"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+            "sauvegarde" des 
+            modifications&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SESSION["caddie"] 
+            = 
+            $caddie;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+            (isset($_GET["achat"])) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// On a demandé 
+            à incrémenter une 
+            valeur&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch 
+            ($_GET["achat"]) 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "pomme":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$caddie["pommes"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "poire":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$caddie["poires"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 
+            "banane":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$caddie["bananes"]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+            "sauvegarde" des 
+            modifications&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SESSION["caddie"] 
+            = 
+            $caddie;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;header("Location: 
+            ".$_SERVER["PHP_SELF"]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die();<BR>&nbsp;&nbsp; 
+            }&nbsp;&nbsp;&nbsp;&nbsp; <BR>?&gt;<BR>Nb Pommes:&lt;?php echo 
+            $caddie["pommes"];?&gt;&lt;br /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=pomme"&gt;Acheter une 
+            pomme&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=pomme"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>Nb Poires:&lt;?php echo $caddie["poires"];?&gt;&lt;br 
+            /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=poire"&gt;Acheter une 
+            poire&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=poire"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>Nb Bananes:&lt;?php echo $caddie["bananes"];?&gt;&lt;br 
+            /&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?achat=banane"&gt;Acheter une 
+            banane&lt;/a&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?raz=banane"&gt;RAZ&lt;/a&gt;&lt;br 
+            /&gt;<BR><BR>&lt;br/&gt;<BR>&lt;a href="&lt;?php echo 
+            $_SERVER["PHP_SELF"];?&gt;?action=destroy"&gt;Détruire la 
+            session&lt;/a&gt;&lt;br/&gt;<BR><BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE width=600>
+  <TBODY>
+  <TR>
+    <TD class=rem>
+      <P class=rem><U>Remarques:</U> 
+      <OL class=rem>
+        <LI>Cela ne change pas fondamentalement du script précédent mais il est 
+        bien agréable de n'avoir qu'une nombre limité de variables de sessions. 
+        </LI></OL>
+      <P></P></TD></TR></TBODY></TABLE>
+<P class=copyright>Ce cours vous est offert par ToutEstFacile ! merci de 
+respecter le travail de l'auteur en gardant cette mention.<BR>D'autres cours de 
+ce genre sont disponibles sur le site <A 
+href="http://www.toutestfacile.com/">ToutEstFacile! (www.toutestfacile.com)</A> 
+</P></BODY></HTML>

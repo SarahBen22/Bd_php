@@ -1,0 +1,150 @@
+.main-basket
+  @extend .main
+  display: flex
+
+.container-basket
+  @extend .container
+  min-height: 100%
+  background-color: #fff
+  box-shadow: 0px 0px 4px 0 hsla(#000, .3)
+  padding: 32px
+
+
+.basket .item-grid
+  display: grid
+  grid-template-columns: min-content 1fr min-content
+
+.basket .title
+  text-align: center
+  font-family: 'Oleo Script', cursive;
+  font-size: 32px
+  margin: 0
+  line-height: .8
+
+
+.basket .img-wrap
+  position: relative
+  margin-right: 16px
+
+.basket .img
+  width: 112.5px
+  height: 150px
+  object-fit: cover
+  display: block
+
+
+.basket .price
+  font-weight: bold
+  width: 112.5px
+  font-size: 16px
+  color: #fff;
+  background-color: #303030
+  display: block
+  text-align: center
+  padding: 8px
+  position: absolute
+  bottom: 0
+  left: 0
+  opacity: 0.8
+
+
+
+.basket .item-title
+  font-weight: 900
+  margin-top: 0
+  margin-bottom: 16px
+
+
+.basket .separator
+  margin: 16px 0
+
+.basket .total-wrap
+  display: grid
+  grid-template-rows: 1fr min-content min-content
+
+
+.basket .item-quantity
+  text-align: right
+
+.basket .item-total
+  text-align: right
+  display: block
+
+.basket .button
+  color: #fff
+  font-weight: 900
+  padding: 8px
+
+
+.item-button-wrap
+  display: flex
+  align-items: center
+
+
+.basket .button-more,
+.basket .button-less
+  @extend .basket .button
+  width: 24px
+  height: 24px
+  padding: 0
+  text-align: center
+  background-color: #303030
+  z-index: 20
+  font-size: 14px
+  display: inline-block
+  line-height: 1.6
+  // align-items: center
+  // justify-content: center
+
+.basket .button-more
+  margin-left: -14px
+
+
+.basket .button-less
+  margin-right: -14px
+
+
+.basket .button-remove
+  @extend .basket .button
+  font-size: 20px
+  background-color: #f82d00
+  z-index: 10
+  font-family: 'Oleo Script', cursive;
+  padding: 12px 20px
+  line-height: 1
+
+
+
+.button-wrap
+  display: flex
+  justify-content: space-between
+  margin-top: 24px
+  margin-bottom: 8px
+
+
+.basket .button-back
+  @extend .basket .button
+  background-color: #f82d00
+  font-size: 24px
+  font-family: 'Oleo Script', cursive;
+
+
+.basket .button-back-center
+  @extend .basket .button-back
+  display: block
+  width: min-content
+  white-space: nowrap
+  margin: 0 auto
+  margin-top: 32px
+
+
+.basket .button-confirm
+  @extend .basket .button
+  background-color: #303030
+  font-size: 24px
+  font-family: 'Oleo Script', cursive;
+
+
+.basket .total-price
+  text-align: right
+  font-size: 24px

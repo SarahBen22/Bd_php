@@ -1,0 +1,103 @@
+.main-thumbnails
+  @extend .main
+  display: grid
+  grid-template-rows: min-content min-content 1fr
+  align-items: stretch
+  grid-row-gap: 16px
+
+.container-thumb
+  @extend .container
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-gap: 16px
+
+  @media all and (max-width: 1160px)
+    grid-template-columns: repeat(3, 1fr)
+
+  @media all and (max-width: 760px)
+    grid-template-columns: repeat(2, 1fr)
+
+  @media all and (max-width: 540px)
+    grid-template-columns: repeat(1, 1fr)
+
+
+.thumbnails
+  height: 350px
+  width: 100%
+  background-color: #fff
+  border: 1px solid #878b91
+  display: inline-block
+  padding: 16px
+  display: grid
+  grid-template-rows: max-content 1fr min-content
+
+  &:hover
+    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, .3)
+
+  &:hover .price
+    opacity: .8
+
+
+.thumbnails .img-wrap
+    position: relative
+
+
+.thumbnails img
+  width: 150px
+  height: 200px
+  object-fit: cover
+  margin: auto
+  display: block
+
+
+.thumbnails .price
+  opacity: 0
+  font-weight: bold
+  width: 150px
+  font-size: 16px
+  color: #fff;
+  background-color: #303030
+  display: block
+  text-align: center
+  padding: 8px
+  position: absolute
+  bottom: 0
+  left: calc(50% - 75px)
+
+
+.thumbnails h3
+  font-weight: 900
+  text-align: center
+  margin-left: 32px
+  margin-right: 32px
+  margin-top: 4px
+  margin-bottom: @margin-top
+  align-self: center
+
+  &.small
+    font-size: 14px
+
+
+
+
+
+.thumbnails .wrap-button
+  display: flex
+  justify-content: center
+
+
+.thumbnails .button
+  all: unset
+  font-family: 'Oleo Script', cursive;
+  padding: 8px
+  cursor: pointer
+  display: inline-flex
+  align-items: center
+  color: #fff
+
+  &.more
+    background-color: #f82d00
+    margin-right: 8px
+
+  &.buy
+    background-color: #303030

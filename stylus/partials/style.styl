@@ -1,0 +1,243 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * BASE STYLE
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+html
+  box-sizing: border-box
+
+
+*, *::before, *::after
+  box-sizing: inherit
+
+
+body
+  padding: 0
+  margin: 0
+  font-family: 'Segoe UI', sans-serif
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  color: #131313
+
+
+a
+  color: inherit
+  text-decoration: none
+
+
+ul
+  list-style-type: none
+  padding: 0
+  margin: 0
+
+pre
+  margin: 0
+  white-space: pre-wrap;
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * LAYOUT
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.main
+  flex: 1 1 auto
+  padding: 32px 0
+  background:
+    radial-gradient(#878b91 3px, transparent 4px),
+    radial-gradient(#d5c6bb 3px, transparent 4px),
+    linear-gradient(#fff 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, #e0e0e0 75px, #e0e0e0 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, #e0e0e0 76px, #e0e0e0 77px, transparent 78px, transparent 109px),
+    #fff
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px
+
+
+
+
+.footer
+  font-family: 'Oleo Script', cursive;
+  background-color: #131313
+  color: #fff
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 45px
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * CONTAINERS
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+maxWidth = 1170px
+.container
+  width: 95%
+  max-width: maxWidth
+  margin: 0 auto
+
+
+.container-test
+  @extend .container
+  background-color: #fff
+  min-height: 450px
+  border: 1px solid #ccc
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * HEADER
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.header
+  background-color: #131313
+  color: #fff
+
+
+
+.container-header
+  @extend .container
+  display: flex
+  justify-content: space-between
+
+
+.page-title
+  font-family: 'Oleo Script', cursive;
+  margin: 0
+  display: flex
+  padding: 16px
+  color: #fff;
+  transition: color .4s ease-in-out
+
+  &:hover
+    color: #f52500
+
+
+.nav-wrap-account
+  display: flex
+  align-items: center
+
+.link-account
+  font-weight: bold
+  padding: 0 8px
+  height: 100%
+  display: inline-flex
+  align-items: center
+
+  &:hover, &.active
+    background-color: #f52500
+
+
+.basket-wrap
+  display: flex
+  height: 100%
+  align-items: center
+  position: relative
+  padding: 0 12px 0 8px
+  transition: background-color .2s ease
+
+  &:hover, &.active
+    background-color: #f52500
+
+  &:hover .basket-number, &.active .basket-number
+    background-color: #fff
+    color: #f52500
+
+
+
+.basket-icon
+  position: relative
+  top: 4px
+  width: 42px
+  height: @height
+  fill: #fff
+
+.basket-number
+  font-size: 12px
+  position: absolute
+  width: 22px
+  height: @width
+  border-radius: (@width / 2)
+  display: inline-block
+  text-align: center
+  line-height: 1.7
+  font-weight: 900
+  right: 4px
+  top: 16px
+  transition: color .2s ease-in-out,
+    background-color .2s ease-in-out
+  background-color: #f52500
+  color: #fff
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * NAVIGATION
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.container-nav
+  @extend .container
+  display: flex
+  justify-content: space-between
+
+  @media all and (max-width: 1160px)
+    flex-wrap: wrap
+    justify-content: center
+
+
+
+
+.nav
+  background-color: #303030
+
+
+.nav-link
+  color: #fff
+  padding: 16px
+  font-weight: bold
+  display: flex
+  width: 100%
+  text-align: center
+  white-space: nowrap
+  justify-content: center
+  align-items: center
+  transition: background-color .2s ease
+
+  &:hover, &.active
+    background-color: #f52500
+
+  @media all and (max-width: 1160px)
+    width: auto
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * Thumbnail Pagination
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.container-pages
+  @extend .container
+  text-align: center
+
+
+
+.main-title
+  font-family: 'Oleo Script', cursive;
+  font-size: 32px
+  margin: 0
+
+
+.pages
+  font-size: 14px
+  width: 28px
+  display: inline-block
+  text-align: center
+  padding: 4px
+  margin: 4px
+  background-color: #303030
+  color: #fff
+  font-weight: 900
+  border-radius: 4px
+
+  &.active
+    background-color: #f52500

@@ -1,0 +1,62 @@
+.modal
+  width: 90vw
+  max-width: maxWidth - 68px
+  min-height: 400px
+  max-height: 80vh
+  background-color: #fff
+  position: fixed
+  margin: auto
+  top: 18vh
+  left: 0
+  right: 0
+  display: flex
+  transform: translateY(-100vh)
+  opacity: 0
+  z-index: 20
+  box-shadow: 4px 4px 6px 0px rgba(0,0,0, .5);
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out
+  overflow-y: auto
+
+  &.show
+    transform: translateY(0)
+    opacity: 1
+
+
+.cover
+  background-color: rgba(0,0,0, .8)
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 10
+  display: none
+
+  &.show
+    display: block
+
+
+.loading {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  border: 6px solid hsla(#f52500, .3);
+  border-radius: 50%;
+  border-top-color: #f52500;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  margin: auto
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+
+.product-detail.grid
+  display: block
+  width: 100%
+  padding: 32px
+
+.product-detail a
+  text-decoration: underline
